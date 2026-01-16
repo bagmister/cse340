@@ -4,3 +4,9 @@
 *:after {
   box-sizing: border-box;
 }
+
+@media (min-width: 1921px) {
+  header {
+    background-color: grey;
+  }
+}

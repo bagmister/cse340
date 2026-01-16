@@ -4,3 +4,19 @@
 *:after {
   box-sizing: border-box;
 }
+
+.mainContainer {
+  background-color: aqua;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+nav {
+  background-color: bisque;
+  display: flex;
+  flex-direction: row;
+}
