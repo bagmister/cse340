@@ -1,12 +1,17 @@
 /******* Change Box Model ***************/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
 
-@media (min-width: 1921px) {
+@media (min-width: 1024px) {
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
   header {
     background-color: grey;
+  }
+
+  nav ul li {
+    display: inline;
+    padding: 5rem;
   }
 }

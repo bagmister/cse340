@@ -5,18 +5,41 @@
   box-sizing: border-box;
 }
 
-.mainContainer {
-  background-color: aqua;
+@media (min-width: 351px) {
+  .mainContainer {
+    background-color: aqua;
+  }
+  
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-image: url('../images/site/small_check.jpg');
+  }
+  
+  header a {
+    color: brown;
+  }
+  
+  header a:hover {
+    color: black;
+    background-color: black;
+  }
+  
+  nav {
+    background-color: bisque;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  nav ul li {
+    display: inline;
+    padding: 3rem;
+  }
+  
+  nav a:hover {
+    color: black;
+  }
+  
 }
 
-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-nav {
-  background-color: bisque;
-  display: flex;
-  flex-direction: row;
-}
