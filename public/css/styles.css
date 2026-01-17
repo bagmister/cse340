@@ -4,17 +4,19 @@
 *:after {
   box-sizing: border-box;
 }
-
+#wrapper {
+  background-image: url('../images/site/small_check.jpg');
+}
 @media (min-width: 351px) {
   .mainContainer {
     background-color: aqua;
+    display: grid;
   }
   
   header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-image: url('../images/site/small_check.jpg');
   }
   
   header a {
