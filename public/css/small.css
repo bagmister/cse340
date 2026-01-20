@@ -5,8 +5,22 @@
   box-sizing: border-box;
 }
 
-@media (max-width: 350px) {
+@media (max-width: 351px) {
   header {
     background-color: aquamarine;
+    display: flex;
+  }
+  
+    nav {
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    justify-items: left;
+  }
+  
+    nav ul li {
+      display: flex;
+      flex-direction: row;
+      padding: .1rem;
   }
 }

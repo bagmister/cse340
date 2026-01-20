@@ -6,8 +6,10 @@
 }
 #wrapper {
   background-image: url('../images/site/small_check.jpg');
+  background-repeat: repeat;
+  min-height: 100vh;
+  padding: 2rem 1rem;
 }
-@media (min-width: 351px) {
   .mainContainer {
     background-color: aqua;
     display: grid;
@@ -20,7 +22,8 @@
   }
   
   header a {
-    color: brown;
+    color: green;
+    padding: 1rem;
   }
   
   header a:hover {
@@ -42,6 +45,9 @@
   nav a:hover {
     color: black;
   }
+
+  footer {
+    background-color: aqua;
+  }
   
-}
 
