@@ -11,10 +11,14 @@
   padding: 2rem 1rem;
 }
   .mainContainer {
-    background-color: aqua;
+    background-color: white;
     display: grid;
   }
   
+  .card { 
+    background-color: white;
+  }
+
   header {
     display: flex;
     flex-direction: row;
@@ -47,7 +51,8 @@
   }
 
   footer {
-    background-color: aqua;
+    background-color: white;
+    justify-items: center;
   }
   
 
