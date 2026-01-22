@@ -10,49 +10,114 @@
   min-height: 100vh;
   padding: 2rem 1rem;
 }
-  .mainContainer {
-    background-color: white;
-    display: grid;
-  }
-  
-  .card { 
-    background-color: white;
-  }
+.mainContainer {
+  background-color: white;
+  display: grid;
+}
 
-  header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  
-  header a {
-    color: green;
-    padding: 1rem;
-  }
-  
-  header a:hover {
-    color: black;
-    background-color: black;
-  }
-  
-  nav {
-    background-color: bisque;
-    display: flex;
-    flex-direction: row;
-  }
-  
-  nav ul li {
-    display: inline;
-    padding: 3rem;
-  }
-  
-  nav a:hover {
-    color: black;
-  }
+.card { 
+  background-color: white;
+}
 
-  footer {
-    background-color: white;
-    justify-items: center;
-  }
-  
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
+header a {
+  color: green;
+  padding: 1rem;
+}
+
+header a:hover {
+  color: black;
+  background-color: black;
+}
+
+nav {
+  background-color: bisque;
+  display: flex;
+  flex-direction: row;
+}
+
+nav ul li {
+  display: inline;
+  padding: 3rem;
+}
+
+nav a:hover {
+  color: black;
+}
+
+footer {
+  background-color: white;
+  justify-items: center;
+}
+
+.heroSection img {
+  width: 100%;
+  display: block;
+  height: auto;
+  object-fit: cover;
+}
+.heroSection {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.heroOverlay {
+  position: relative;
+  max-width: 200px;
+  background-color: rgba(0, 0, 0, 0.65);
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  font-size: small;
+}
+
+.heroOverlay h2 {
+  margin-top: 0;
+  color: #fff;
+}
+
+.left-column {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 2rem;
+}
+
+.upgrades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.2rem;
+}
+
+.carUpgrade {
+  background: #f8f8f8;
+  padding: 1.2rem;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.button {
+  display: inline-block;
+  background: #006600;
+  color: white;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.button:hover {
+  background: #004d00;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
