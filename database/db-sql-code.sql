@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS public.inventory (
     inv_make character varying NOT Null,
     inv_model character varying Not Null,
     inv_year character(4) NOT Null,
+    inv_description text NOT Null,
     inv_image character varying NOT Null,
     inv_thumbnail character varying NOT Null,
     inv_price numeric(9, 0) NOT Null,
