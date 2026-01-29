@@ -11,12 +11,32 @@ const env = require("dotenv").config()
 const expressLayouts = require("express-ejs-layouts")
 const app = express()
 const static = require("./routes/static")
-const inventoryController = require("./controllers/invController")
+const inventoryRoute = require("./routes/inventoryRoute")
+const session = require("express-session")
+const pool = require('./database/')
 
 
 /* ***********************
  * View Engine and Templates
  *************************/
+
+ app.use(session({
+  store: new (require('connect-pg-simple')(session))({
+    createTableIfMissing: true,
+    pool,
+  }),
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  name: 'sessionId',
+}))
+
+app.use(require('connect-flash')())
+app.use(function(req, res, next){
+  res.locals.messages = require('express-messages')(req, res)
+  next()
+})
+
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout")
@@ -28,7 +48,7 @@ app.set("layout", "./layouts/layout")
 app.use(static)
 // Index route
 app.get("/", baseController.buildHome)
-app.use("/inv", inventoryController.buildByClassificationId)
+app.use("/inv", inventoryRoute)
 
 /* ***********************
  * Local Server Information
