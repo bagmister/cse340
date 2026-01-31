@@ -46,7 +46,7 @@ nav {
 }
 
 nav ul li {
-  display: inline;
+  list-style-type: none;
   padding: 3rem;
 }
 
@@ -148,4 +148,23 @@ h4 {
   /* text-align: center; */
   font-family: "MedievalSharp", 'cursive';
   font-weight: 500;
+}
+
+main ul li {
+  background-color: gray;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  justify-content: space-around;
+  margin: 1rem;
+  list-style-type: none;
+}
+
+.namePrice  {
+  color: aqua;
+  font-family: "MedievalSharp", 'cursive';
+}
+
+main h1 {
+  font-family: "MedievalSharp", 'cursive';
+  background-color: gray;
 }

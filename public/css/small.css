@@ -18,10 +18,10 @@
     justify-items: left;
   }
   
-    nav ul li {
+    /* nav ul li {
       display: flex;
       flex-direction: column;
       text-align: center;
       padding: .1rem;
-  }
+  } */
 }
