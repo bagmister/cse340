@@ -20,7 +20,7 @@
 }
 
 header {
-  background-color: white;
+  background-color: bisque;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -45,9 +45,15 @@ nav {
   font-weight: 500;
 }
 
-nav ul li {
+nav ul {
+  display: flex;
+  flex-direction: row;
   list-style-type: none;
-  padding: 3rem;
+}
+
+nav ul li {
+  padding: .5rem;
+  margin-inline: inherit;
 }
 
 nav a:hover {
@@ -153,10 +159,20 @@ h4 {
 main ul li {
   background-color: gray;
   padding: 1rem 2rem;
-  border-radius: 10px;
-  justify-content: space-around;
+  border-radius: 20px;
+  justify-content: center;
   margin: 1rem;
   list-style-type: none;
+}
+main ul li a img {
+  width: 100%;
+  display: block;
+  height: auto;
+  object-fit: cover;
+}
+
+main ul li a:hover {
+  color: black;
 }
 
 .namePrice  {
@@ -167,4 +183,6 @@ main ul li {
 main h1 {
   font-family: "MedievalSharp", 'cursive';
   background-color: gray;
+  color: aqua;
+  text-align: center;
 }

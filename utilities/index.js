@@ -24,7 +24,7 @@ Util.getNav = async function (req, res, next) {
   return list
 }
 
-Util.buildClassificationGrid = async function(data){
+Util.buildClassificationGrid = async function(data, w){
   let grid
   if(data.length > 0){
     grid = '<ul id="inv-display">'
@@ -52,6 +52,10 @@ Util.buildClassificationGrid = async function(data){
     grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
   }
   return grid
+}
+
+Util.handelErrors = function handelErrors(data) {
+  return console.log(data)
 }
 
 module.exports = Util

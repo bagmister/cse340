@@ -12,16 +12,21 @@
   }
   
     nav {
-    background-color: bisque;
     display: flex;
     flex-direction: column;
-    justify-items: left;
+
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    padding-right: 3.5rem;
+    justify-items: center;
+  }
+
+  nav ul li {
+    margin-top: .5rem;
+    text-align: center;
   }
   
-    /* nav ul li {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      padding: .1rem;
-  } */
 }
