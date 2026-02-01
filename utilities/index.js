@@ -43,6 +43,8 @@ Util.buildClassificationGrid = async function(data, w ){
       + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
       + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
       grid += '</h2>'
+      grid += '<span class="milage">'
+      grid += new Intl.NumberFormat('en-US', {style: "decimal"}).format(vehicle.inv_miles) + ' Miles</span>'
       grid += '<span>$' 
       + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
       grid += '</div>'
