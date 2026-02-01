@@ -24,7 +24,7 @@ Util.getNav = async function (req, res, next) {
   return list
 }
 
-Util.buildClassificationGrid = async function(data, w){
+Util.buildClassificationGrid = async function(data, w ){
   let grid
   if(data.length > 0){
     grid = '<ul id="inv-display">'
@@ -32,7 +32,8 @@ Util.buildClassificationGrid = async function(data, w){
       grid += '<li>'
       grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
       + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
-      + 'details"><img src="' + vehicle.inv_thumbnail 
+      + 'details"><img src="' + vehicle.inv_thumbnail
+      + '" srcset="' + vehicle.inv_image + '" 2x"' 
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
       +' on CSE Motors" /></a>'
       grid += '<div class="namePrice">'
