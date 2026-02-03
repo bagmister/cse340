@@ -12,8 +12,10 @@ const utilities = require("./utilities")
 // const errors = require("./errors")
 const expressLayouts = require("express-ejs-layouts")
 const app = express()
+app.use(express.urlencoded({ extended: true }))
 const static = require("./routes/static")
 const inventoryRoute = require("./routes/inventoryRoute")
+const accountRoute = require("./routes/accountRoute")
 const session = require("express-session")
 const pool = require('./database/')
 
@@ -51,6 +53,7 @@ app.use(static)
 // Index route
 app.get("/", baseController.buildHome)
 app.use("/inv", inventoryRoute)
+app.use("/account", accountRoute)
 
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})

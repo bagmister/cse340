@@ -1,0 +1,18 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<form id="loginForm" action="./account/login" method="POST">
+    <label for="account_email" autocomplete="email" >email: 
+    <input type="text" id="account_email" name="account" required>
+    </label>
+    <br><br>
+    <label for="password">password: </label>
+    <input type="password" id="account_password" name="password" required>
+    <br><br>
+    <button type="submit">login</button>
+</form>
+
+<% messages() %>
