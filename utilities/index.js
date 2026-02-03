@@ -57,6 +57,16 @@ Util.buildClassificationGrid = async function(data, w ){
   return grid
 }
 
+Util.buildInventoryDetailPage = async function(data){
+  let grid
+  if(data.length > 0){
+    
+  } else { 
+    grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+  }
+  return grid
+}
+
 Util.handelErrors = function handelErrors(data) {
   return console.log(data)
 }
