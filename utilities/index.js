@@ -57,15 +57,63 @@ Util.buildClassificationGrid = async function(data, w ){
   return grid
 }
 
-Util.buildInventoryDetailPage = async function(data){
-  let grid
-  if(data.length > 0){
-    
-  } else { 
-    grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+Util.buildInventoryDetailPage = async function (data) {
+  let grid = ""
+
+  if (data.length > 0) {
+    const vehicle = data[0]
+
+    grid += `
+      <div class="inventoryDetailPage">
+
+        <div class="detail-left">
+          <img 
+            src="${vehicle.inv_image}" 
+            alt="Image of ${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors"
+          />
+          <p>
+            <a href="/inv/type/${vehicle.classification_id}">
+              &larr; Back to Inventory
+            </a>
+          </p>
+        </div>
+
+        <div class="detail-right">
+          <h2>${vehicle.inv_make} ${vehicle.inv_model}</h2>
+
+          <p class="description">
+            ${vehicle.inv_description}
+          </p>
+
+          <p class="mileage">
+            <strong>Mileage:</strong>
+            ${new Intl.NumberFormat("en-US").format(vehicle.inv_miles)} miles
+          </p>
+
+          <p class="vehicle">
+            <strong>Vehicle:</strong>
+            ${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}
+          </p>
+
+          <p class="price">
+            <strong>Price:</strong>
+            $${new Intl.NumberFormat("en-US").format(vehicle.inv_price)}
+          </p>
+
+          <button class="buy-now">
+            Buy Now!
+          </button>
+        </div>
+
+      </div>
+    `
+  } else {
+    grid = '<p class="notice">Sorry, no matching vehicles could be found.</p>'
   }
+
   return grid
 }
+
 
 Util.handelErrors = function handelErrors(data) {
   return console.log(data)

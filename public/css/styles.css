@@ -190,3 +190,33 @@ main h1 {
 .milage {
   padding: 1rem;
 }
+
+.inventoryDetailPage {
+  background-color: gray;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.detail-left img {
+  padding: 1rem;
+  width: 100%;
+  height: auto;
+}
+
+.buy-now {
+  background: #006600;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-family: "MedievalSharp", 'cursive';
+}
+
+.detail-left a {
+  padding: 1rem;
+  font-family: "MedievalSharp", 'cursive';
+}
+
+.detail-left a :hover {
+  background: #004d00;
+}
