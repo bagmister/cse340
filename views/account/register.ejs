@@ -4,15 +4,24 @@
   res.redirect('/')
 } %>
 
-<form id="loginForm" method="POST">
-    <label for="account_email" autocomplete="email" >email: 
-    <input type="text" id="account_email" name="account" required>
-    </label>
-    <br><br>
-    <label for="password">password: </label>
-    <input type="password" id="account_password" name="password" required>
-    <br><br>
-    <button type="submit">login</button>
+<form id="registerForm" action="/account/register" method="POST">
+  <label for="account_firstname">First name:
+    <input type="text" id="account_firstname" name="account_firstname" required>
+  </label><br><br>
+
+  <label for="account_lastname">Last name:
+    <input type="text" id="account_lastname" name="account_lastname" required>
+  </label><br><br>
+
+  <label for="account_email">Email:
+    <input type="email" id="account_email" name="account_email" autocomplete="email" required>
+  </label><br><br>
+
+  <label for="account_password">Password:
+    <input type="password" id="account_password" name="account_password" required>
+  </label><br><br>
+
+  <button type="submit">Register</button>
 </form>
 
 <% messages() %>

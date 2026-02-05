@@ -13,24 +13,28 @@ async function getAccountByEmail(email) {
   }
 }
 
-async function createAccount(data) {
-  const { account_email, account_password } = data
-
+async function createAccount(account_firstname, account_lastname, account_email, account_password) {
   try {
-    const result = await pool.query(
-      `INSERT INTO public.account 
-       (account_email, account_password) 
-       VALUES ($1, $2) 
-       RETURNING *`,
-      [account_email, account_password]
-    )
-    return result.rows[0]
+    const sql = `
+      INSERT INTO public.account 
+        (account_firstname, account_lastname, account_email, account_password) 
+      VALUES ($1, $2, $3, $4) 
+      RETURNING *`;
+
+    const result = await pool.query(sql, [
+      account_firstname,
+      account_lastname,
+      account_email,
+      account_password
+    ]);
+
+    return result.rows[0];
   } catch (err) {
-    if (err.code === '99999') {
-      throw new Error("Email already exists")
+    if (err.code === '23505') {  // ← correct code for unique violation (duplicate email)
+      throw new Error("Email already exists");
     }
-    console.error("createAccount error:", err)
-    throw err
+    console.error("createAccount error:", err);
+    throw err;
   }
 }
 

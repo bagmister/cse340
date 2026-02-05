@@ -115,7 +115,7 @@ Util.buildInventoryDetailPage = async function (data) {
 }
 
 
-Util.handelErrors = function handelErrors(data) {
+Util.handleErrors = function handleErrors(data) {
   return console.log(data)
 }
 

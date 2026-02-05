@@ -11,6 +11,8 @@ const env = require("dotenv").config()
 const utilities = require("./utilities")
 const errors = require("./routes/errors")
 const expressLayouts = require("express-ejs-layouts")
+const cookieParser = require("cookie-parser")
+const bodyParser = require("body-parser")
 const app = express()
 app.use(express.urlencoded({ extended: true }))
 const static = require("./routes/static")
@@ -40,6 +42,9 @@ app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+
 
 app.set("view engine", "ejs")
 app.use(expressLayouts)
