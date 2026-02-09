@@ -5,6 +5,7 @@ async function showErrors(req, res, next) {
   res.render("errors/error", {
     title: "error",
     nav,
+    errors: null,
   })
 }
 

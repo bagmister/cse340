@@ -192,7 +192,7 @@ main h1 {
 }
 
 .inventoryDetailPage {
-  background-color: gray;
+  background-color: bisque;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
@@ -219,4 +219,22 @@ main h1 {
 
 .detail-left a :hover {
   background: #004d00;
+}
+
+#registerForm, #loginForm {
+  background-color: bisque;
+}
+
+input:required:invalid, input:focus:invalid {
+  color: red;
+  background-image: url(/images/invalid.png);
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+input:required:valid {
+  background-image: url(/images/valid.png);
+  background-position: right top;
+  background-repeat: no-repeat;
+  color: green;
 }

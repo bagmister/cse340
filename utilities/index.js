@@ -85,6 +85,11 @@ Util.buildInventoryDetailPage = async function (data) {
             ${vehicle.inv_description}
           </p>
 
+          <p class="inv-color">
+            <strong>Color:</strong>
+            ${vehicle.inv_color}
+          </p>
+
           <p class="mileage">
             <strong>Mileage:</strong>
             ${new Intl.NumberFormat("en-US").format(vehicle.inv_miles)} miles
@@ -114,9 +119,14 @@ Util.buildInventoryDetailPage = async function (data) {
   return grid
 }
 
-
-Util.handleErrors = function handleErrors(data) {
-  return console.log(data)
+Util.handleErrors = (fn) => {
+  return async (req, res, next) => {
+    try {
+      await fn(req, res, next)
+    } catch (err) {
+      next(err)
+    }
+  }
 }
 
 module.exports = Util
