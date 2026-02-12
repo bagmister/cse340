@@ -1,0 +1,59 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+      
+<form id="addInventoryForm" action="/inventory/addInventory" method="POST">
+    <label for="inv_year">Year:
+        <input type="number" id="inv_year" name="inv_year" required placeholder="Enter year of manufacture" value="<%= formData.inv_year || '' %>">
+    </label><br><br>
+
+    <label for="inv_make">Make\brand:
+        <input type="text" id="inv_make" name="inv_make" required placeholder="Manufacture of vehicle" value="<%= formData.inv_make || '' %>">
+    </label><br><br>
+
+    <label for="inv_model">Model:
+        <input type="text" id="inv_model" name="inv_model" required placeholder="Model of Vehcile" value="<%= formData.inv_model || '' %>">
+    </label><br><br>
+
+    <label for="inv_color">Color:
+        <input type="text" id="inv_color" name="inv_color" required placeholder="main color of vehicle" value="<%= formData.inv_color || '' %>">
+    </label><br><br>
+
+    <label for="inv_miles">Miles:
+        <input type="number" id="inv_miles" name="inv_miles" required placeholder="How many miles are on the vehicle?" value="<%= formData.inv_miles || '' %>">
+    </label><br><br>
+
+    <label for="inv_description">Description:
+        <input type="text" id="inv_description" name="inv_description" required placeholder="Description of vehicle" value="<%= formData.inv_description || '' %>">
+    </label><br><br>
+
+    <label for="inv_image">image:
+        <input type="text" id="inv_image" name="inv_image" required placeholder="image of vehicle" value="<%= formData.inv_image || '' %>">
+    </label><br><br>
+    
+    <label for="inv_thumbnail">Thumbnail:
+        <input type="text" id="inv_thumbnail" name="inv_thumbnail" required placeholder="thumbnail of vehicle" value="<%= formData.inv_thumbnail || '' %>">
+    </label><br><br>
+
+    <label for="inv_classification_id">Classification:
+        <input type="number" id="inv_classification_id" name="inv_classification_id" required placeholder="Classification id of vehicle" value="<%= formData.inv_classification_id || '' %>">
+    </label><br><br>
+
+    <label for="inv_price">Price:
+        <input type="number" id="inv_price" name="inv_price" required placeholder="Price of vehicle in a whole rounded number" value="<%= formData.inv_price || '' %>">
+    </label><br><br>
+
+  <button type="submit">Add Inventory</button>
+</form>
+
+<% messages() %>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>

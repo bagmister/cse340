@@ -1,30 +1,30 @@
-const invModel = require("../models/inventory-model")
-const Util = {}
+const invModel = require("../models/inventory-model");
+const util = {}
 
 /* ************************
  * Constructs the nav HTML unordered list
  ************************** */
-Util.getNav = async function (req, res, next) {
-  let data = await invModel.getClassifications()
-  let list = "<ul>"
-  list += '<li><a href="/" title="Home page">Home</a></li>'
-  data.rows.forEach((row) => {
-    list += "<li>"
-    list +=
-      '<a href="/inv/type/' +
-      row.classification_id +
-      '" title="See our inventory of ' +
-      row.classification_name +
-      ' vehicles">' +
-      row.classification_name +
-      "</a>"
-    list += "</li>"
-  })
-  list += "</ul>"
-  return list
-}
+util.getNav = async function () {
+  try {
+    const data = await invModel.getClassifications();
+    let list = '<ul>';
+    list += '<li><a href="/" title="Home page">Home</a></li>';
 
-Util.buildClassificationGrid = async function(data, w ){
+    data.rows.forEach((row) => {
+      list += '<li>';
+      list += `<a href="/inv/type/${row.classification_id}" title="See our inventory of ${row.classification_name} vehicles">${row.classification_name}</a>`;
+      list += '</li>';
+    });
+
+    list += '</ul>';
+    return list;
+  } catch (err) {
+    console.error("Error building nav:", err);
+    return '<ul><li><a href="/">Home</a></li></ul>';
+  }
+};
+
+util.buildClassificationGrid = async function(data, w ){
   let grid
   if(data.length > 0){
     grid = '<ul id="inv-display">'
@@ -57,7 +57,7 @@ Util.buildClassificationGrid = async function(data, w ){
   return grid
 }
 
-Util.buildInventoryDetailPage = async function (data) {
+util.buildInventoryDetailPage = async function (data) {
   let grid = ""
 
   if (data.length > 0) {
@@ -119,14 +119,19 @@ Util.buildInventoryDetailPage = async function (data) {
   return grid
 }
 
-Util.handleErrors = (fn) => {
+util.handleErrors = (fn) => {
+  if (typeof fn !== 'function') {
+    throw new TypeError(`handleErrors expected a function, got: ${typeof fn}`);
+  }
+
   return async (req, res, next) => {
     try {
-      await fn(req, res, next)
+      await fn(req, res, next);
     } catch (err) {
-      next(err)
+      console.error(`Error in route handler (${req.originalUrl}):`, err.stack || err);
+      next(err); // pass to global error handler
     }
-  }
-}
+  };
+};
 
-module.exports = Util
+module.exports = util
