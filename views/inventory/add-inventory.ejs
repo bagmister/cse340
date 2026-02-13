@@ -4,7 +4,7 @@
   res.redirect('/')
 } %>
       
-<form id="addInventoryForm" action="/inv/add-inventory" method="POST">
+<form id="addInventoryForm" action="/inv/add-inventory" method="POST" novalidate>
     <label for="inv_year">Year:
         <input type="number" id="inv_year" name="inv_year" required placeholder="Enter year of manufacture" value="<%= formData.inv_year || '' %>">
     </label><br><br>
