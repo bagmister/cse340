@@ -4,7 +4,7 @@
   res.redirect('/')
 } %>
       
-<form id="addClassificationForm" action="/inventory/add-classification" method="POST">
+<form id="addClassificationForm" action="/inv/add-classification" method="POST">
     <label for="classification_name">New classification name:
         <input type="text" id="classification_name" name="classification_name" required pattern="[A-Za-z]+" placeholder="Enter the new classification name" value="<%= formData.classification_name || '' %>">
     </label><br><br>

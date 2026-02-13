@@ -238,3 +238,13 @@ input:required:valid {
   background-repeat: no-repeat;
   color: green;
 }
+
+#addClassificationForm, #addInventoryForm, #invManagement{
+  background-color: gray;
+  padding: 1rem;
+  color: aqua;
+}
+
+#invManagement a {
+  color: aqua;
+}

@@ -4,7 +4,7 @@
   res.redirect('/')
 } %>
       
-<form id="addInventoryForm" action="/inventory/addInventory" method="POST">
+<form id="addInventoryForm" action="/inv/add-inventory" method="POST">
     <label for="inv_year">Year:
         <input type="number" id="inv_year" name="inv_year" required placeholder="Enter year of manufacture" value="<%= formData.inv_year || '' %>">
     </label><br><br>
@@ -30,11 +30,11 @@
     </label><br><br>
 
     <label for="inv_image">image:
-        <input type="text" id="inv_image" name="inv_image" required placeholder="image of vehicle" value="<%= formData.inv_image || '' %>">
+        <input type="text" id="inv_image" name="inv_image" required placeholder="image of vehicle" value="<%= formData.inv_image || 'https://placehold.co/600x400?text=no\nvehicle' %>">
     </label><br><br>
     
     <label for="inv_thumbnail">Thumbnail:
-        <input type="text" id="inv_thumbnail" name="inv_thumbnail" required placeholder="thumbnail of vehicle" value="<%= formData.inv_thumbnail || '' %>">
+        <input type="text" id="inv_thumbnail" name="inv_thumbnail" required placeholder="thumbnail of vehicle" value="<%= formData.inv_thumbnail || 'https://placehold.co/300x200?text=no\nvehicle' %>">
     </label><br><br>
 
     <label for="inv_classification_id">Classification:
