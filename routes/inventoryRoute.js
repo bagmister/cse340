@@ -23,5 +23,36 @@ router.post(
   util.handleErrors(invController.addInventoryItem)
 )
 
+router.get("/getInventory/:classification_id", util.handleErrors(invController.getInventoryJSON))
+router.get("/edit/:inv_id",
+  util.checkLogin,
+  util.checkAccountType,
+  util.handleErrors(invController.buildEditInventory)
+)
+router.post(
+  "/edit",
+  util.checkLogin,
+  util.checkAccountType,
+  invValidate.inventoryRules(),
+  invValidate.checkInventoryData,
+  util.handleErrors(invController.updateInventoryItem)
+)
+
+
+router.get(
+  "/delete/:inv_id",
+  util.checkLogin,
+  util.checkAccountType,
+  util.handleErrors(invController.buildDeleteInventory)
+)
+
+router.post(
+  "/delete",
+  util.checkLogin,
+  util.checkAccountType,
+  util.handleErrors(invController.deleteInventory)
+)
+
+
 
 module.exports = router;

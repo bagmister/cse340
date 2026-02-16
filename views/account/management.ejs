@@ -1,0 +1,15 @@
+<h1>Account Management</h1>
+
+<div class="infoCard">
+  <p>Welcome <%= accountData.account_firstname %></p>
+  <% if (accountData.account_type === "Employee" || 
+        accountData.account_type === "Admin") { %>
+
+    <h2>Inventory Management</h2>
+    <a href="/inv/management">Manage Inventory</a>
+
+  <% } %>
+
+  <h2>Account Settings</h2>
+  <a href="/account/update-account">upate account info including password changes</a>
+</div>

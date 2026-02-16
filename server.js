@@ -45,7 +45,8 @@ app.use(function(req, res, next){
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
-
+app.use(cookieParser())
+app.use(utilities.checkJWTToken)
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout")

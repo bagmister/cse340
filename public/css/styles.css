@@ -248,3 +248,35 @@ input:required:valid {
 #invManagement a {
   color: aqua;
 }
+
+.infoCard {
+  color: aqua;
+  background-color: gray;
+}
+
+/* #inventoryDisplay th,
+#inventoryDisplay td {
+  border: 1px solid #ccc;
+  padding: 8px;
+} */
+
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#inventoryDisplay thead {
+  background-color: #333;
+  color: white;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+#inventoryDisplay tbody tr:nth-child(even) {
+  background-color: chocolate;
+}

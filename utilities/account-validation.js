@@ -40,6 +40,47 @@ const utilities = require(".")
     ]
   }
 
+  validate.loginRules = () => {
+    return [
+      body("account_email")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isEmail()
+      .normalizeEmail()
+      .withMessage("A valid email is required."),
+  
+      body("account_password")
+        .trim()
+        .notEmpty()
+        .isStrongPassword({
+          minLength: 12,
+          minLowercase: 1,
+          minUppercase: 1,
+          minNumbers: 1,
+          minSymbols: 1,
+        })
+        .withMessage("Password does not meet requirements."),
+    ]
+  }
+
+    validate.checkLoginData = async (req, res, next) => {
+    const { account_email } = req.body
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty()) {
+      let nav = await utilities.getNav()
+      return res.render("account/login", {
+        errors,
+        title: "Login",
+        nav,
+        account_email,
+      })
+    }
+    next()
+  }
+
+
   validate.checkRegData = async (req, res, next) => {
   const { account_firstname, account_lastname, account_email } = req.body
   let errors = []

@@ -6,10 +6,9 @@ async function getAccountByEmail(email) {
       `SELECT * FROM public.account WHERE account_email = $1`,
       [email]
     )
-    return result.rows[0] || null
+    return result.rows[0]
   } catch (err) {
-    console.error("getAccountByEmail error:", err)
-    throw err
+    return new Error("No matching email found")
   }
 }
 
@@ -38,7 +37,61 @@ async function createAccount(account_firstname, account_lastname, account_email,
   }
 }
 
-module.exports = {
-  getAccountByEmail,
-  createAccount,
+async function updateAccountInfo(
+  account_id,
+  account_firstname,
+  account_lastname,
+  account_email,
+  hashedPassword
+) {
+  try {
+    const fields = []
+    const values = []
+    let index = 1
+
+    if (account_firstname) {
+      fields.push(`account_firstname = $${index++}`)
+      values.push(account_firstname)
+    }
+
+    if (account_lastname) {
+      fields.push(`account_lastname = $${index++}`)
+      values.push(account_lastname)
+    }
+
+    if (account_email) {
+      fields.push(`account_email = $${index++}`)
+      values.push(account_email)
+    }
+
+    if (hashedPassword) {
+      fields.push(`account_password = $${index++}`)
+      values.push(hashedPassword)
+    }
+
+    // If nothing to update
+    if (fields.length === 0) {
+      throw new Error("No fields provided for update.")
+    }
+
+    const sql = `
+      UPDATE public.account
+      SET ${fields.join(", ")}
+      WHERE account_id = $${index}
+      RETURNING *
+    `
+
+    values.push(account_id)
+
+    const result = await pool.query(sql, values)
+    return result.rows[0]
+
+  } catch (error) {
+    console.error("updateAccountInfo error:", error)
+    throw error
+  }
 }
+
+
+
+module.exports = { getAccountByEmail, createAccount, updateAccountInfo}

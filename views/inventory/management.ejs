@@ -1,9 +1,41 @@
-<% if (title) { %>
 <h1><%= title %></h1>
-<% } else {
-  res.redirect('/')
-} %>
+
+<% if (accountData && 
+      (accountData.account_type === "Employee" || 
+       accountData.account_type === "Admin")) { %>
+
 <div id="invManagement">
-  <a href="/inv/add-inventory">Add New Vehicle</a><br>
-  <a href="/inv/add-classification">Add New Classification</a>
+  <p>
+    <a href="/inv/add-inventory">Add New Vehicle</a>
+  </p>
+  <p>
+    <a href="/inv/add-classification">Add New Classification</a>
+  </p>
+  <hr>
+  <h2>Manage Inventory</h2>
+  <label for="classificationList">
+    Select Classification:
+  </label>
+  <select id="classificationList">
+    <option value="">Choose a Classification</option>
+    <% classificationList.forEach(classification => { %>
+      <option value="<%= classification.classification_id %>">
+        <%= classification.classification_name %>
+      </option>
+    <% }) %>
+  </select>
+  <noscript>
+    <p class="notice">
+      JavaScript is required to manage inventory.
+    </p>
+  </noscript>
+  <table id="inventoryDisplay"></table>
 </div>
+
+<% } else { %>
+  <p class="notice">
+    You do not have permission to access inventory management.
+  </p>
+<% } %>
+
+<% messages() %>

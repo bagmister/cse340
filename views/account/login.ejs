@@ -1,9 +1,8 @@
 <% if (title) { %>
-<h1><%= title %></h1>
-<% } else {
-  res.redirect('/')
-} %>
-    <form id="loginForm" method="POST">
+  <h1><%= title %></h1>
+<% } %>
+
+    <form action="/account/login" method="post">
      <label for="account_email" autocomplete="email" >email: 
         <input type="text" id="account_email" name="account_email" required>
       </label>
@@ -15,5 +14,5 @@
     </form>
 
 <p>If you don't have an account yet</p>
-<a href="register">register here</a>
+<a href="/account/register">register here</a>
 <% messages() %>

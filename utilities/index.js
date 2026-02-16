@@ -1,4 +1,6 @@
 const invModel = require("../models/inventory-model");
+const jwt = require("jsonwebtoken")
+require("dotenv").config()
 const util = {}
 
 /* ************************
@@ -59,7 +61,6 @@ util.buildClassificationGrid = async function(data, w ){
 
 util.buildInventoryDetailPage = async function (data) {
   let grid = ""
-
   if (data.length > 0) {
     const vehicle = data[0]
 
@@ -133,5 +134,68 @@ util.handleErrors = (fn) => {
     }
   };
 };
+
+util.buildClassificationList = async function(data) {
+  const inventory = await invModel.getInventory()
+}
+
+util.checkJWTToken = (req, res, next) => {
+  res.locals.loggedin = false
+  res.locals.accountData = null
+  if (req.cookies.jwt) {
+    jwt.verify(
+      req.cookies.jwt,
+      process.env.ACCESS_TOKEN_SECRET,
+      function (err, accountData) {
+        if (err) {
+          req.flash("notice", "Please log in")
+          res.clearCookie("jwt")
+          return res.redirect("/account/login")
+        }
+        res.locals.accountData = accountData
+        res.locals.loggedin = true
+        next()
+      }
+    )
+  } else {
+    next()
+  }
+}
+
+ util.checkLogin = (req, res, next) => {
+  if (res.locals.loggedin) {
+    next()
+  } else {
+    req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+ }
+
+util.checkAccountType = (req, res, next) => {
+  if (
+    res.locals.accountData &&
+    (res.locals.accountData.account_type === "Employee" ||
+     res.locals.accountData.account_type === "Admin")
+  ) {
+    next()
+  } else {
+    req.flash("notice", "You do not have permission to access that page.")
+    return res.redirect("/")
+  }
+}
+
+util.checkAdmin = (req, res, next) => {
+  if (
+    res.locals.accountData &&
+    res.locals.accountData.account_type === "Admin"
+  ) {
+    next()
+  } else {
+    req.flash("notice", "Admin access required.")
+    return res.redirect("/inv/management")
+  }
+}
+
+
 
 module.exports = util

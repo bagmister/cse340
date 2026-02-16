@@ -38,7 +38,16 @@
     </label><br><br>
 
     <label for="inv_classification_id">Classification:
-        <input type="number" id="inv_classification_id" name="inv_classification_id" required placeholder="Classification id of vehicle" value="<%= formData.inv_classification_id || '' %>">
+    <select id="inv_classification_id" name="inv_classification_id" required>
+        <option value="">Select Classification</option>
+        <% classifications.forEach(classification => { %>
+        <option 
+            value="<%= classification.classification_id %>"
+            <%= formData.inv_classification_id == classification.classification_id ? 'selected' : '' %>>
+            <%= classification.classification_name %>
+        </option>
+        <% }) %>
+    </select>
     </label><br><br>
 
     <label for="inv_price">Price:
