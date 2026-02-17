@@ -222,7 +222,10 @@ main h1 {
 }
 
 #registerForm, #loginForm {
-  background-color: bisque;
+  background-color: gray;
+  color: aqua;
+  padding: 1rem;
+  font-family: "MedievalSharp", 'cursive';
 }
 
 input:required:invalid, input:focus:invalid {
@@ -243,15 +246,20 @@ input:required:valid {
   background-color: gray;
   padding: 1rem;
   color: aqua;
+  font-family: "MedievalSharp", 'cursive';
 }
 
 #invManagement a {
   color: aqua;
+  padding: 1rem;
+  font-family: "MedievalSharp", 'cursive';
 }
 
 .infoCard {
+  padding: 1rem;
   color: aqua;
   background-color: gray;
+  font-family: "MedievalSharp", 'cursive';
 }
 
 /* #inventoryDisplay th,
@@ -261,6 +269,7 @@ input:required:valid {
 } */
 
 #inventoryDisplay {
+  padding: 1rem;
   width: 100%;
   border-collapse: collapse;
 }

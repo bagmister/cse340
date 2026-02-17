@@ -1,18 +1,19 @@
 <% if (title) { %>
   <h1><%= title %></h1>
 <% } %>
-
+  <div class="infoCard">
     <form action="/account/login" method="post">
-     <label for="account_email" autocomplete="email" >email: 
+    <label for="account_email" autocomplete="email" >email: 
         <input type="text" id="account_email" name="account_email" required>
       </label>
       <br><br>
       <label for="password">password: </label>
       <input type="password" id="account_password" name="account_password" required>
       <br><br>
-     <button type="submit">login</button>
+    <button type="submit">login</button>
     </form>
-
-<p>If you don't have an account yet</p>
-<a href="/account/register">register here</a>
+    
+    <p>If you don't have an account yet</p>
+    <a href="/account/register">register here</a>
+  </div>
 <% messages() %>

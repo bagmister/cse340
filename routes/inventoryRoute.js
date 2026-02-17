@@ -4,7 +4,6 @@ const invController = require("../controllers/invController")
 const util = require("../utilities/")
 const invValidate = require("../utilities/inventory-validation")
 
-router.get("/type/:classificationId", util.handleErrors(invController.buildByClassificationId))
 router.get("/detail/:id", util.handleErrors(invController.buildInventoryDetailById))
 router.get("/management", util.handleErrors(invController.buildManagementView))
 router.get("/add-classification", util.handleErrors(invController.buildAddClassification))
@@ -23,7 +22,7 @@ router.post(
   util.handleErrors(invController.addInventoryItem)
 )
 
-router.get("/getInventory/:classification_id", util.handleErrors(invController.getInventoryJSON))
+router.get("/type/:classification_id", util.handleErrors(invController.buildByClassificationId))
 router.get("/edit/:inv_id",
   util.checkLogin,
   util.checkAccountType,
