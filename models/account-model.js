@@ -92,6 +92,25 @@ async function updateAccountInfo(
   }
 }
 
+async function getAllAccounts() {
+  const sql = `
+    SELECT *
+    FROM account
+    ORDER BY account_id
+  `
+  const result = await pool.query(sql)
+  return result.rows
+}
+ 
+async function updateAccountRole(account_id, account_type) {
+  const sql = `
+    UPDATE account
+    SET account_type = $1
+    WHERE account_id = $2
+  `
+  return pool.query(sql, [account_type, account_id])
+}
 
 
-module.exports = { getAccountByEmail, createAccount, updateAccountInfo}
+
+module.exports = { getAccountByEmail, createAccount, updateAccountInfo, getAllAccounts, updateAccountRole}

@@ -32,6 +32,20 @@ router.post(
   utilities.checkLogin,
   utilities.handleErrors(accountController.updateAccountInfo)
 )
+ 
+router.get(
+  "/admin-accounts",
+  utilities.checkLogin,
+  utilities.checkAdmin,
+  utilities.handleErrors(accountController.buildAdminAccounts)
+)
+ 
+router.post(
+  "/admin-accounts",
+  utilities.checkLogin,
+  utilities.checkAdmin,
+  utilities.handleErrors(accountController.updateAccountRole)
+)
 
 
 module.exports = router;

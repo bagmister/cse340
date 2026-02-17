@@ -9,6 +9,12 @@
     <a href="/inv/management">Manage Inventory</a>
 
   <% } %>
+   <% if (accountData.account_type === "Admin") { %>
+
+    <h2>user account Management</h2>
+    <a href="/account/admin-accounts">Manage accounts for other users</a>
+
+  <% } %>
 
   <h2>Account Settings</h2>
   <a href="/account/update-account">upate account info including password changes</a>

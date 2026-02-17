@@ -255,18 +255,12 @@ input:required:valid {
   font-family: "MedievalSharp", 'cursive';
 }
 
-.infoCard {
+.infoCard, #errorPage {
   padding: 1rem;
   color: aqua;
   background-color: gray;
   font-family: "MedievalSharp", 'cursive';
 }
-
-/* #inventoryDisplay th,
-#inventoryDisplay td {
-  border: 1px solid #ccc;
-  padding: 8px;
-} */
 
 #inventoryDisplay {
   padding: 1rem;
@@ -288,4 +282,16 @@ input:required:valid {
 
 #inventoryDisplay tbody tr:nth-child(even) {
   background-color: chocolate;
+}
+
+.adminTable {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  background-color: gray;
+  font-family: "MedievalSharp", 'cursive';
+}
+
+.adminTable th {
+  color: aqua;
 }

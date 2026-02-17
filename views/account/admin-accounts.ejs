@@ -1,0 +1,50 @@
+<h1><%= title %></h1>
+<%- messages() %>
+
+<table class="adminTable">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Current Role</th>
+    <th>Update Role</th>
+  </tr>
+</thead>
+
+<tbody>
+  <% accounts.forEach(account => { %>
+  <tr>
+    <td>
+      <%= account.account_firstname %>
+      <%= account.account_lastname %>
+    </td>
+  <td><%= account.account_email %></td>
+  <td><%= account.account_type %></td>
+  <td>
+  <form method="post" action="/account/admin-accounts">
+    <input type="hidden"
+    name="account_id"
+    value="<%= account.account_id %>">
+
+    <select name="account_type">
+    <option value="Client"
+      <%= account.account_type === "Client" ? "selected" : "" %>>
+      Client
+    </option>
+    <option value="Employee"
+      <%= account.account_type === "Employee" ? "selected" : "" %>>
+      Employee
+    </option>
+
+    <option value="Admin"
+      <%= account.account_type === "Admin" ? "selected" : "" %>>
+      Admin
+    </option>
+    </select>
+    <button type="submit">Update</button>
+  </form>
+  </td>
+  </tr>
+  <% }) %>
+</tbody>
+</table>

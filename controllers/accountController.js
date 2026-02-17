@@ -191,6 +191,24 @@ async function updateAccountInfo(req, res) {
   }
 }
 
+ async function buildAdminAccounts(req, res) {
+  const nav = await utilities.getNav()
+  const accounts = await accountModel.getAllAccounts()
+ 
+  res.render("account/admin-accounts", {
+    title: "Admin Account Management",
+    nav,
+    accounts
+  })
+}
+ 
+ async function updateAccountRole(req, res) {
+  const { account_id, account_type } = req.body
+ console.log(req.body)
+  await accountModel.updateAccountRole(account_id, account_type)
+ 
+  req.flash("notice", "Account role updated successfully.")
+  res.redirect("/account/admin-accounts")
+}
 
-
-module.exports = { buildLogin, buildRegister, register, login, buildManagement, logout, buildupdateAccountInfo, updateAccountInfo}
+module.exports = { buildLogin, buildRegister, register, login, buildManagement, logout, buildupdateAccountInfo, updateAccountInfo, buildAdminAccounts, updateAccountRole}
